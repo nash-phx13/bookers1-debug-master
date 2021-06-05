@@ -8,6 +8,14 @@ get 'home/about' => 'homes#about', as: 'about'
  resources :post_comments, only: [:create, :destroy]
  resource :favorites, only: [:create, :destroy]
  end
- resources :users
+ 
+ resources :users do
+# ——————————————— ここから ———————————————
+  resource :follows, only: [:create, :destroy]
+  get 'followings' => 'follows#followings', as: 'followings'
+  get 'followers' => 'follows#followers', as: 'followers'
+# ——————————— ここまでネストさせる ———————————
+end
+
 
 end
