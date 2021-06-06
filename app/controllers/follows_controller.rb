@@ -1,5 +1,5 @@
 class FollowsController < ApplicationController
-
+before_action :authenticate_user!
 # ——————フォロー機能を作成・保存・削除する————————————
   def create
     current_user.follow(params[:user_id])
