@@ -1,5 +1,8 @@
-<p>検索</p>
-<%= form_tag(search_path,:method => 'get') do %>
-  <%= text_field_tag :search %>
-  <%= submit_tag 'Search', :name => nil %>
+
+<% if @model == 'user' %>
+  <h3>【Usersモデルの検索結果】検索ワード：<%= @content %></h3>
+  <%= render 'users/index', users: @records %>
+<% elsif @model == 'book' %>
+  <h3>【Booksモデルの検索結果】検索ワード：<%= @content %></h3>
+    <%= render 'books/index', books: @records %>
 <% end %>
